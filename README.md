@@ -34,11 +34,37 @@
     - 함수 근사 실험을 수행하며 시각화된 결과
     - 다양한 n 값(샘플 수)에 따른 근사 오차 비교
 
+## 음성 텍스트 변환 (Whisper 사용) (2023.12.09)
+이 프로젝트에는 OpenAI의 **Whisper 모델**을 활용한 음성 텍스트 변환 실험도 포함되어 있습니다.
+
+- **Whisper란?**
+    - 다양한 오디오의 대규모 데이터셋을 학습한 범용 음성 인식 모델
+    - 다국어 음성 인식, 음성 번역, 언어 식별을 수행할 수 있는 멀티태스킹 모델
+
+- **사용 예제**
+    - OpenAI API를 사용하여 음성 파일을 텍스트로 변환
+    - `audio.mp3` 파일을 업로드한 후 변환 실행 가능
+
+```python
+!pip install openai==0.28
+import openai
+
+openai.api_key = "your_api_key_here"
+
+# 음성 텍스트 변환 (현재 폴더에 오디오 파일이 있어야 함)
+audio_file = open("audio.mp3", "rb")
+transcript = openai.Audio.transcribe("whisper-1", audio_file)
+print(transcript['text'])
+```
+
+- 현재 `audio.mp3` 파일은 제공되지 않았지만, 다른 오디오 파일을 사용하여 테스트 가능
+- Whisper를 활용한 음성 인식 성능이 매우 우수했음
+
 ## 실행 방법
 이 프로젝트는 Jupyter Notebook (.ipynb) 형식으로 제공되며, Google Colab 또는 로컬 환경에서 실행할 수 있습니다.
 
 1. Google Drive에 업로드 후 Colab에서 열기
-2. 필수 라이브러리 설치 (`numpy`, `matplotlib`, `torch` 필요)
+2. 필수 라이브러리 설치 (`numpy`, `matplotlib`, `torch`, `openai` 필요)
 3. 코드를 실행하며 수식 및 그래프를 확인
 
 ## 관련 기술 및 키워드
@@ -47,6 +73,7 @@
 - **딥러닝 이론**
 - **수학적 기초 (선형대수, 미적분, 확률론)**
 - **PyTorch를 활용한 인공 신경망 구현**
+- **Whisper 모델을 활용한 음성 텍스트 변환**
 
 ## 카테고리 분류
 이 프로젝트는 **📊 Data Science & Visualization** 및 **🛠 Automation & Engineering** 분야에 해당합니다.
